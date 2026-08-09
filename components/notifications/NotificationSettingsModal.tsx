@@ -165,7 +165,7 @@ export function NotificationSettingsModal({ isOpen, onClose }: NotificationSetti
   const getTypeIcon = (type: AppAlarmConfig['type']) => {
     switch (type) {
       case 'workout':
-        return <Dumbbell className="text-[#b7ff3c]" size={16} />
+        return <Dumbbell className="text-[var(--accent)]" size={16} />
       case 'meal':
         return <Utensils className="text-orange-400" size={16} />
       case 'water':
@@ -179,17 +179,17 @@ export function NotificationSettingsModal({ isOpen, onClose }: NotificationSetti
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-      <div className="card-lg bg-[#11161d] border border-[#242d38] max-w-xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-scale-up">
+      <div className="card-lg bg-[var(--surface)] border border-[var(--border)] max-w-xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-scale-up">
         {/* Header */}
         <div className="flex items-center justify-between p-5 border-b border-border bg-surface-1">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#b7ff3c]/15 border border-[#b7ff3c]/30 flex items-center justify-center text-accent">
+            <div className="w-10 h-10 rounded-xl bg-[var(--accent)]/15 border border-[var(--accent)]/30 flex items-center justify-center text-accent">
               <BellRing size={20} />
             </div>
             <div>
               <h2 className="text-lg font-black text-text-main flex items-center gap-2">
                 Alarms & Reminders
-                <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#b7ff3c]/15 text-accent font-bold border border-[#b7ff3c]/30">
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--accent)]/15 text-accent font-bold border border-[var(--accent)]/30">
                   Superapp
                 </span>
               </h2>
@@ -226,7 +226,7 @@ export function NotificationSettingsModal({ isOpen, onClose }: NotificationSetti
                 Enable Alerts
               </Button>
             ) : (
-              <span className="text-xs font-bold text-accent px-2.5 py-1 rounded-lg bg-[#b7ff3c]/15 border border-[#b7ff3c]/30">
+              <span className="text-xs font-bold text-accent px-2.5 py-1 rounded-lg bg-[var(--accent)]/15 border border-[var(--accent)]/30">
                 Enabled ✓
               </span>
             )}
@@ -248,7 +248,7 @@ export function NotificationSettingsModal({ isOpen, onClose }: NotificationSetti
                 type="checkbox"
                 checked={settings.sound_enabled}
                 onChange={(e) => handleToggleSound(e.target.checked)}
-                className="w-4 h-4 accent-[#b7ff3c] cursor-pointer"
+                className="w-4 h-4 accent-[var(--accent)] cursor-pointer"
               />
             </div>
 
@@ -289,7 +289,7 @@ export function NotificationSettingsModal({ isOpen, onClose }: NotificationSetti
 
             {/* Add Custom Alarm Form */}
             {showAddAlarm && (
-              <div className="p-4 rounded-xl bg-surface-3 border border-[#b7ff3c]/40 space-y-3 animate-fade-in">
+              <div className="p-4 rounded-xl bg-surface-3 border border-[var(--accent)]/40 space-y-3 animate-fade-in">
                 <div className="text-xs font-bold text-text-main">Create New Alarm</div>
                 <div className="grid grid-cols-2 gap-2">
                   <div>
@@ -299,7 +299,7 @@ export function NotificationSettingsModal({ isOpen, onClose }: NotificationSetti
                       placeholder="e.g. Afternoon Protein Snack"
                       value={newTitle}
                       onChange={(e) => setNewTitle(e.target.value)}
-                      className="w-full px-3 py-2 text-xs rounded-lg bg-surface-1 border border-border text-text-main focus:outline-none focus:border-[#b7ff3c]"
+                      className="w-full px-3 py-2 text-xs rounded-lg bg-surface-1 border border-border text-text-main focus:outline-none focus:border-[var(--accent)]"
                     />
                   </div>
                   <div>
@@ -307,7 +307,7 @@ export function NotificationSettingsModal({ isOpen, onClose }: NotificationSetti
                     <select
                       value={newType}
                       onChange={(e) => setNewType(e.target.value as AppAlarmConfig['type'])}
-                      className="w-full px-3 py-2 text-xs rounded-lg bg-surface-1 border border-border text-text-main focus:outline-none focus:border-[#b7ff3c]"
+                      className="w-full px-3 py-2 text-xs rounded-lg bg-surface-1 border border-border text-text-main focus:outline-none focus:border-[var(--accent)]"
                     >
                       <option value="meal">Meal / Diet</option>
                       <option value="workout">Workout Session</option>
@@ -325,7 +325,7 @@ export function NotificationSettingsModal({ isOpen, onClose }: NotificationSetti
                       type="time"
                       value={newTime}
                       onChange={(e) => setNewTime(e.target.value)}
-                      className="w-full px-3 py-2 text-xs rounded-lg bg-surface-1 border border-border text-text-main focus:outline-none focus:border-[#b7ff3c]"
+                      className="w-full px-3 py-2 text-xs rounded-lg bg-surface-1 border border-border text-text-main focus:outline-none focus:border-[var(--accent)]"
                     />
                   </div>
                   <div>
@@ -337,7 +337,7 @@ export function NotificationSettingsModal({ isOpen, onClose }: NotificationSetti
                         setNewTone(tone)
                         soundFx.playAlarmByTone(tone)
                       }}
-                      className="w-full px-3 py-2 text-xs rounded-lg bg-surface-1 border border-border text-text-main focus:outline-none focus:border-[#b7ff3c]"
+                      className="w-full px-3 py-2 text-xs rounded-lg bg-surface-1 border border-border text-text-main focus:outline-none focus:border-[var(--accent)]"
                     >
                       {TONE_OPTIONS.map((t) => (
                         <option key={t.id} value={t.id}>
@@ -387,7 +387,7 @@ export function NotificationSettingsModal({ isOpen, onClose }: NotificationSetti
                         type="time"
                         value={alarm.time}
                         onChange={(e) => handleTimeChange(alarm.id, e.target.value)}
-                        className="px-2 py-1 text-xs font-mono font-bold bg-surface-1 border border-border rounded-md text-accent focus:outline-none focus:border-[#b7ff3c]"
+                        className="px-2 py-1 text-xs font-mono font-bold bg-surface-1 border border-border rounded-md text-accent focus:outline-none focus:border-[var(--accent)]"
                       />
 
                       {/* Test trigger */}
@@ -404,7 +404,7 @@ export function NotificationSettingsModal({ isOpen, onClose }: NotificationSetti
                         type="checkbox"
                         checked={alarm.enabled}
                         onChange={(e) => handleToggleAlarm(alarm.id, e.target.checked)}
-                        className="w-4 h-4 accent-[#b7ff3c] cursor-pointer"
+                        className="w-4 h-4 accent-[var(--accent)] cursor-pointer"
                       />
                     </div>
                   </div>
@@ -420,7 +420,7 @@ export function NotificationSettingsModal({ isOpen, onClose }: NotificationSetti
                             onClick={() => handleDayToggle(alarm.id, d.id)}
                             className={`w-5 h-5 rounded-full text-[9px] font-bold flex items-center justify-center transition-all ${
                               active
-                                ? 'bg-[#b7ff3c]/20 text-accent border border-[#b7ff3c]/40'
+                                ? 'bg-[var(--accent)]/20 text-accent border border-[var(--accent)]/40'
                                 : 'bg-surface-1 text-muted hover:text-text-main'
                             }`}
                           >

@@ -170,7 +170,7 @@ export default function SettingsPage() {
 
   async function handleSignOut() {
     await supabase.auth.signOut()
-    router.push('/login')
+    window.location.href = '/login' // force full reload to clear all state
   }
 
   async function handleDeleteAccount() {

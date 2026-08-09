@@ -118,8 +118,8 @@ export default function LoginPage() {
         <div className="w-full max-w-sm">
           {/* Logo */}
           <div className="text-center mb-8">
-            <div className="w-16 h-16 bg-[#b7ff3c] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-[#b7ff3c]/25">
-              <span className="text-[#080b10] font-black text-3xl">C</span>
+            <div className="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-accent/25">
+              <span className="text-accent-dark font-black text-3xl">C</span>
             </div>
             <h1 className="text-3xl font-black text-text-main">Consistency</h1>
             <p className="text-muted mt-1 text-sm">Win today. Repeat tomorrow.</p>
@@ -141,7 +141,7 @@ export default function LoginPage() {
                 No email? Check your spam folder or{' '}
                 <button
                   onClick={() => setState('idle')}
-                  className="text-[#b7ff3c] underline underline-offset-2 font-bold"
+                  className="text-accent underline underline-offset-2 font-bold"
                 >
                   try again
                 </button>
@@ -177,7 +177,7 @@ export default function LoginPage() {
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="you@example.com"
                         disabled={state === 'sending'}
-                        className="pl-9 bg-[#111720] border-[#242d38] text-text-main"
+                        className="pl-9 bg-surface border-border text-text-main"
                         required
                       />
                     </div>
@@ -200,7 +200,7 @@ export default function LoginPage() {
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="••••••••"
                         disabled={state === 'sending'}
-                        className="pl-9 bg-[#111720] border-[#242d38] text-text-main"
+                        className="pl-9 bg-surface border-border text-text-main"
                         required
                         minLength={6}
                       />
@@ -239,11 +239,11 @@ export default function LoginPage() {
                 </div>
 
                 {/* Instant Demo Access Button */}
-                <div className="mt-4 pt-4 border-t border-[#242d38] flex flex-col gap-2">
+                <div className="mt-4 pt-4 border-t border-border flex flex-col gap-2">
                   <button
                     type="button"
                     onClick={handleDemoLogin}
-                    className="w-full bg-[#1a2332] hover:bg-[#242d38] text-[#b7ff3c] text-xs font-bold py-2.5 px-3 rounded-xl transition-colors flex items-center justify-center gap-1.5 border border-[#b7ff3c]/30"
+                    className="w-full bg-surface-2 hover:bg-border text-accent text-xs font-bold py-2.5 px-3 rounded-xl transition-colors flex items-center justify-center gap-1.5 border border-accent/30"
                   >
                     <Sparkles size={14} /> Instant Preview / Demo Mode
                   </button>
@@ -270,7 +270,7 @@ export default function LoginPage() {
                   { icon: <Shield size={18} />, label: 'Your data, private' },
                 ].map(({ icon, label }) => (
                   <div key={label} className="flex flex-col items-center gap-1.5 text-muted">
-                    <div className="text-[#b7ff3c]">{icon}</div>
+                    <div className="text-accent">{icon}</div>
                     <span className="text-xs font-medium">{label}</span>
                   </div>
                 ))}

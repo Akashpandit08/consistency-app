@@ -10,10 +10,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantStyles: Record<string, string> = {
-  primary: 'bg-[#b7ff3c] text-[#080b10] hover:bg-[#a6f027] font-black shadow-lg shadow-[#b7ff3c]/25 border-none',
-  ghost: 'bg-transparent border border-[#242d38] text-[#8d98a7] hover:border-[#b7ff3c] hover:text-white font-semibold',
-  danger: 'bg-[#ff4d4d] text-white hover:brightness-90 font-bold border-none',
-  outline: 'bg-transparent border border-[#b7ff3c]/60 text-[#b7ff3c] hover:bg-[#b7ff3c]/10 font-bold',
+  primary: 'bg-accent text-accent-dark hover:brightness-110 font-black shadow-lg shadow-accent/25 border-none',
+  ghost: 'bg-transparent border border-border text-muted hover:border-accent hover:text-text-main font-semibold',
+  danger: 'bg-danger text-white hover:brightness-90 font-bold border-none',
+  outline: 'bg-transparent border border-accent/60 text-accent hover:bg-accent/10 font-bold',
 }
 
 const sizeStyles: Record<string, string> = {
@@ -39,11 +39,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           className,
         ].join(' ')}
         disabled={disabled || loading}
-        style={{
-          backgroundColor: variant === 'primary' ? '#b7ff3c' : undefined,
-          color: variant === 'primary' ? '#080b10' : undefined,
-          ...style,
-        }}
+        style={style}
         {...props}
       >
         {loading ? (

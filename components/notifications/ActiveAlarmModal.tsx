@@ -89,7 +89,7 @@ export function ActiveAlarmModal() {
   const getIcon = () => {
     switch (alarm.type) {
       case 'workout':
-        return <Dumbbell className="text-[#b7ff3c]" size={28} />
+        return <Dumbbell className="text-[var(--accent)]" size={28} />
       case 'meal':
         return <Utensils className="text-orange-400" size={28} />
       case 'water':
@@ -103,7 +103,7 @@ export function ActiveAlarmModal() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-      <div className="card-lg bg-[#11161d] border-2 border-[#b7ff3c]/60 max-w-md w-full p-6 text-center shadow-2xl shadow-[#b7ff3c]/20 animate-scale-up relative">
+      <div className="card-lg bg-[var(--surface)] border-2 border-[var(--accent)]/60 max-w-md w-full p-6 text-center shadow-2xl shadow-[var(--accent)]/20 animate-scale-up relative">
         {/* Close Button */}
         <button
           onClick={handleDismiss}
@@ -114,8 +114,8 @@ export function ActiveAlarmModal() {
         </button>
 
         {/* Pulsating Alarm Icon */}
-        <div className="relative mx-auto mb-4 w-16 h-16 rounded-full bg-[#b7ff3c]/15 border border-[#b7ff3c]/40 flex items-center justify-center">
-          <div className="absolute inset-0 rounded-full bg-[#b7ff3c]/20 animate-ping opacity-75" />
+        <div className="relative mx-auto mb-4 w-16 h-16 rounded-full bg-[var(--accent)]/15 border border-[var(--accent)]/40 flex items-center justify-center">
+          <div className="absolute inset-0 rounded-full bg-[var(--accent)]/20 animate-ping opacity-75" />
           <div className="relative z-10 animate-bounce">{getIcon()}</div>
         </div>
 
@@ -140,7 +140,7 @@ export function ActiveAlarmModal() {
             size="lg"
             fullWidth
             onClick={handleAction}
-            className="flex items-center justify-center gap-2 font-black text-base shadow-lg shadow-[#b7ff3c]/30"
+            className="flex items-center justify-center gap-2 font-black text-base shadow-lg shadow-[var(--accent)]/30"
           >
             <span>
               {alarm.type === 'workout'

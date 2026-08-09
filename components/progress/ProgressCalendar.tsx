@@ -221,7 +221,7 @@ export function ProgressCalendar({ weightLogs, workoutDates }: ProgressCalendarP
                 
                 {hasPhoto && (
                   <div className="absolute bottom-1 right-1 z-10">
-                    <span className="bg-[#b7ff3c] text-black text-[8px] font-black px-1 rounded-sm shadow">
+                    <span className="bg-[var(--accent)] text-black text-[8px] font-black px-1 rounded-sm shadow">
                       {dayPhotos.length}
                     </span>
                   </div>
@@ -235,7 +235,7 @@ export function ProgressCalendar({ weightLogs, workoutDates }: ProgressCalendarP
       {/* ─── Day Details Modal ─── */}
       {showDayModal && selectedDate && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm animate-fade-in">
-          <div className="card-lg bg-[#11161d] border border-[#242d38] max-w-md w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-scale-up">
+          <div className="card-lg bg-[var(--surface)] border border-[var(--border)] max-w-md w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-scale-up">
             {(() => {
               const dateStr = format(selectedDate, 'yyyy-MM-dd')
               const { dayPhotos, dayWeight, workedOut } = getDayData(dateStr)
@@ -388,7 +388,7 @@ function BeforeAfterCompareModal({ photos, onClose }: { photos: ProgressPhotoEnt
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/95 backdrop-blur-md animate-fade-in">
-      <div className="w-full max-w-4xl h-full max-h-[90vh] flex flex-col bg-[#080b10] rounded-2xl border border-border overflow-hidden">
+      <div className="w-full max-w-4xl h-full max-h-[90vh] flex flex-col bg-[var(--bg)] rounded-2xl border border-border overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-border bg-surface-1">
           <div>
@@ -431,7 +431,7 @@ function BeforeAfterCompareModal({ photos, onClose }: { photos: ProgressPhotoEnt
 
           {/* VS Badge for desktop */}
           <div className="hidden md:flex flex-col items-center justify-center -mx-2 z-10">
-            <div className="w-10 h-10 rounded-full bg-accent text-black font-black flex items-center justify-center border-4 border-[#080b10] shadow-xl">
+            <div className="w-10 h-10 rounded-full bg-accent text-black font-black flex items-center justify-center border-4 border-[var(--bg)] shadow-xl">
               VS
             </div>
           </div>

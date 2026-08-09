@@ -57,37 +57,37 @@ export default function AdminDashboard() {
   return (
     <div className="min-h-screen bg-bg text-text-main flex flex-col md:flex-row">
       {/* Sidebar */}
-      <aside className="w-full md:w-64 bg-[#111720] border-r border-[#242d38] p-6 flex flex-col">
+      <aside className="w-full md:w-64 bg-[var(--surface)] border-r border-[var(--border)] p-6 flex flex-col">
         <div className="flex items-center gap-3 mb-10">
-          <div className="w-10 h-10 bg-[#b7ff3c] rounded-xl flex items-center justify-center shadow-lg shadow-[#b7ff3c]/20">
-            <span className="text-[#080b10] font-black text-xl">C</span>
+          <div className="w-10 h-10 bg-[var(--accent)] rounded-xl flex items-center justify-center shadow-lg shadow-[var(--accent)]/20">
+            <span className="text-[var(--bg)] font-black text-xl">C</span>
           </div>
           <div>
             <h1 className="font-bold text-lg leading-tight">Admin OS</h1>
-            <p className="text-xs text-[#b7ff3c]">Superuser Access</p>
+            <p className="text-xs text-[var(--accent)]">Superuser Access</p>
           </div>
         </div>
 
         <nav className="flex flex-col gap-2 flex-1">
-          <Link href="/admin" className="flex items-center gap-3 bg-[#b7ff3c]/10 text-[#b7ff3c] px-4 py-3 rounded-xl font-semibold transition-colors">
+          <Link href="/admin" className="flex items-center gap-3 bg-[var(--accent)]/10 text-[var(--accent)] px-4 py-3 rounded-xl font-semibold transition-colors">
             <Users size={18} />
             Users
           </Link>
-          <button className="flex items-center gap-3 text-muted hover:text-text-main hover:bg-[#242d38] px-4 py-3 rounded-xl font-medium transition-colors text-left">
+          <button className="flex items-center gap-3 text-muted hover:text-text-main hover:bg-[var(--border)] px-4 py-3 rounded-xl font-medium transition-colors text-left">
             <Activity size={18} />
             System Metrics
           </button>
-          <button className="flex items-center gap-3 text-muted hover:text-text-main hover:bg-[#242d38] px-4 py-3 rounded-xl font-medium transition-colors text-left">
+          <button className="flex items-center gap-3 text-muted hover:text-text-main hover:bg-[var(--border)] px-4 py-3 rounded-xl font-medium transition-colors text-left">
             <Database size={18} />
             Database
           </button>
-          <button className="flex items-center gap-3 text-muted hover:text-text-main hover:bg-[#242d38] px-4 py-3 rounded-xl font-medium transition-colors text-left">
+          <button className="flex items-center gap-3 text-muted hover:text-text-main hover:bg-[var(--border)] px-4 py-3 rounded-xl font-medium transition-colors text-left">
             <Settings size={18} />
             Settings
           </button>
         </nav>
         
-        <div className="mt-auto pt-6 border-t border-[#242d38]">
+        <div className="mt-auto pt-6 border-t border-[var(--border)]">
           <Link href="/dashboard" className="text-sm text-muted hover:text-text-main transition-colors flex items-center gap-2">
             &larr; Back to App
           </Link>
@@ -115,7 +115,7 @@ export default function AdminDashboard() {
             <Button 
               onClick={generateFakeUsers}
               disabled={generating}
-              className="gap-2 bg-gradient-to-r from-[#b7ff3c] to-[#9ce020] text-[#080b10] shadow-lg shadow-[#b7ff3c]/20"
+              className="gap-2 bg-gradient-to-r from-[var(--accent)] to-[#9ce020] text-[var(--bg)] shadow-lg shadow-[var(--accent)]/20"
             >
               {generating ? <RefreshCw size={16} className="animate-spin" /> : <Sparkles size={16} />}
               Generate Fake Users
@@ -125,47 +125,47 @@ export default function AdminDashboard() {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-          <div className="bg-[#111720] border border-[#242d38] rounded-2xl p-6">
+          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-muted font-medium">Total Users</h3>
-              <Users size={20} className="text-[#b7ff3c]" />
+              <Users size={20} className="text-[var(--accent)]" />
             </div>
             <p className="text-4xl font-black">{users.length}</p>
           </div>
-          <div className="bg-[#111720] border border-[#242d38] rounded-2xl p-6">
+          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-muted font-medium">Active Today</h3>
               <Activity size={20} className="text-green-400" />
             </div>
             <p className="text-4xl font-black">{Math.floor(users.length * 0.4)}</p>
           </div>
-          <div className="bg-gradient-to-br from-[#1a2332] to-[#080b10] border border-[#b7ff3c]/20 rounded-2xl p-6 relative overflow-hidden">
-            <div className="absolute -right-6 -top-6 w-24 h-24 bg-[#b7ff3c]/10 rounded-full blur-2xl"></div>
+          <div className="bg-gradient-to-br from-[#1a2332] to-[var(--bg)] border border-[var(--accent)]/20 rounded-2xl p-6 relative overflow-hidden">
+            <div className="absolute -right-6 -top-6 w-24 h-24 bg-[var(--accent)]/10 rounded-full blur-2xl"></div>
             <div className="flex items-center justify-between mb-4 relative z-10">
-              <h3 className="text-muted font-medium text-[#b7ff3c]">System Status</h3>
-              <div className="w-3 h-3 rounded-full bg-[#b7ff3c] shadow-[0_0_10px_#b7ff3c] animate-pulse"></div>
+              <h3 className="text-muted font-medium text-[var(--accent)]">System Status</h3>
+              <div className="w-3 h-3 rounded-full bg-[var(--accent)] shadow-[0_0_10px_var(--accent)] animate-pulse"></div>
             </div>
             <p className="text-xl font-bold relative z-10 text-white">All Systems Operational</p>
           </div>
         </div>
 
         {/* Users Table */}
-        <div className="bg-[#111720] border border-[#242d38] rounded-2xl overflow-hidden">
-          <div className="p-6 border-b border-[#242d38] flex items-center justify-between">
+        <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl overflow-hidden">
+          <div className="p-6 border-b border-[var(--border)] flex items-center justify-between">
             <h3 className="font-bold text-lg">Recent Users</h3>
           </div>
           
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-[#080b10] text-muted text-xs uppercase tracking-wider">
+                <tr className="bg-[var(--bg)] text-muted text-xs uppercase tracking-wider">
                   <th className="px-6 py-4 font-medium">User / Email</th>
                   <th className="px-6 py-4 font-medium">Created At</th>
                   <th className="px-6 py-4 font-medium">Status</th>
                   <th className="px-6 py-4 font-medium text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#242d38]">
+              <tbody className="divide-y divide-[var(--border)]">
                 {loading && users.length === 0 ? (
                   <tr>
                     <td colSpan={4} className="px-6 py-10 text-center text-muted">
@@ -184,7 +184,7 @@ export default function AdminDashboard() {
                     <tr key={user.id} className="hover:bg-[#1a2332] transition-colors group">
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#242d38] to-[#111720] flex items-center justify-center font-bold text-sm">
+                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--border)] to-[var(--surface)] flex items-center justify-center font-bold text-sm">
                             {user.email.charAt(0).toUpperCase()}
                           </div>
                           <div>
@@ -203,7 +203,7 @@ export default function AdminDashboard() {
                         </span>
                       </td>
                       <td className="px-6 py-4 text-right">
-                        <button className="text-sm text-[#b7ff3c] font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button className="text-sm text-[var(--accent)] font-medium opacity-0 group-hover:opacity-100 transition-opacity">
                           View Details
                         </button>
                       </td>
