@@ -358,6 +358,8 @@ export interface DailyStats {
 export type AnalyticsEvent =
   | 'signup_started'
   | 'signup_completed'
+  | 'login_started'
+  | 'login_completed'
   | 'onboarding_started'
   | 'onboarding_completed'
   | 'workout_started'
