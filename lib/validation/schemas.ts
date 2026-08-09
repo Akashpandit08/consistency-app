@@ -7,6 +7,11 @@ export const emailSchema = z
   .min(5)
   .max(254)
 
+export const passwordSchema = z
+  .string()
+  .min(6, 'Password must be at least 6 characters.')
+  .max(50)
+
 // ─── Onboarding ────────────────────────────────────────────────
 export const onboardingSchema = z.object({
   goal: z.enum([

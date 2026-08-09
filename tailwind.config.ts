@@ -11,18 +11,18 @@ const config: Config = {
     extend: {
       colors: {
         // Brand palette
-        bg: '#080b10',
-        surface: '#111720',
-        border: '#242d38',
-        accent: '#b7ff3c',
-        'accent-dark': '#101408',
-        muted: '#8d98a7',
+        bg: 'var(--bg)',
+        surface: 'var(--surface)',
+        border: 'var(--border)',
+        accent: 'var(--accent)',
+        'accent-dark': 'var(--accent-dark)',
+        muted: 'var(--muted)',
         danger: '#ff4d4d',
         warning: '#f59e0b',
         success: '#22c55e',
         // Surface variants
-        'surface-2': '#1a2332',
-        'surface-3': '#1e293b',
+        'surface-2': 'var(--surface-2)',
+        'surface-3': 'var(--surface-3)',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'Arial', 'sans-serif'],
