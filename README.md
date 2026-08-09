@@ -1,144 +1,63 @@
-# 🏋️ Consistency Online — Modern Fitness & Workout Platform
+# Consistency — The Offline-First Fitness Superapp
 
-> A production-grade, offline-first, $0-cost baseline fitness and workout platform built with **Next.js**, **Supabase Free Tier**, **IndexedDB**, and **Vanilla CSS**.
+Consistency is a modern, zero-cost, offline-first health and fitness superapp. Designed to work flawlessly in the deepest basement gyms without internet, it tracks your workouts, diet, body metrics, and progress seamlessly.
 
----
+## 🚀 Features
 
-## ⚡ Zero/Low-Cost Infrastructure Architecture
+- **Offline-First Architecture**: Built using IndexedDB and Service Workers. Log workouts, take progress photos, and view your diet without any internet connection. It automatically syncs with the cloud when you're back online.
+- **Zero-Cost Cloud Architecture**: Runs on Vercel and Supabase Free Tiers with zero custom backend servers. Heavy media is optimized locally in the browser.
+- **Client-Side Image Compression**: Progress photos are resized and WebP-compressed entirely within the browser using HTML5 Canvas before saving, protecting your storage quotas and mobile bandwidth.
+- **Visual Progress Calendar**: A highly interactive calendar that visually maps your workout days (🔥), weigh-in days (⚖️), and progress photo thumbnails. Includes a slider to compare "Before & After" photos side-by-side.
+- **7-Day Diet Programs**: Fully customizable, day-wise, and hour-wise meal planning. Choose from pre-built programs (Muscle Gain, Keto, Clean Cut) or build your own.
+- **Universal Alarm Synthesizer**: Never miss a meal or a workout. The app features a custom Web Audio API synthesizer that generates beautiful, high-quality alarm tones (gongs, pulses, chimes) without downloading any audio files.
+- **Global Light & Dark Themes**: Fully responsive UI built with Tailwind CSS v4 featuring a classic white light mode and a slick midnight dark mode.
+- **Smart PPL Logic**: Push, Pull, Legs workout tracking with integrated rest timers and volume calculations.
 
-This application is engineered specifically to operate **100% on free tiers** during early-to-mid stage growth, requiring **$0/month in hosting costs** and **no dedicated VPS or always-running backend server**.
+## 🛠 Tech Stack
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    Client Browser / PWA                     │
-│  ┌───────────────────────────────────────────────────────┐  │
-│  │   IndexedDB (idb) & LocalStorage (Offline Data)       │  │
-│  │   Web Audio API (0-Byte Synthesized Audio Cues)       │  │
-│  │   HTML5 Canvas (Client-Side WebP Compression)         │  │
-│  │   Batched Analytics Queue (10s debounce / unload)     │  │
-│  └───────────────────────────────────────────────────────┘  │
-└──────────────┬──────────────────────────────┬───────────────┘
-               │ (Syncs when online)          │ (Edge Static CDN)
-               ▼                              ▼
-┌──────────────────────────────┐ ┌────────────────────────────┐
-│      Supabase Free Tier      │ │    Vercel Hobby Tier       │
-│  - PostgreSQL (500MB)        │ │  - Next.js Edge / CDN      │
-│  - Supabase Auth (50k MAU)   │ │  - Static Asset Delivery   │
-│  - Storage (1GB WebP photos) │ │  - 100GB Bandwidth / month │
-│  - Row Level Security (RLS)  │ │  - Zero VPS maintenance    │
-└──────────────────────────────┘ └────────────────────────────┘
-```
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Database / Auth**: [Supabase](https://supabase.com/) (PostgreSQL)
+- **State & Offline Storage**: React Context + IndexedDB
+- **Icons**: Lucide React
+- **Dates**: date-fns
 
----
+## 📦 Getting Started
 
-## 📊 Free-Tier Limits & Scaling Reference
+### Prerequisites
 
-| Resource | Provider | Free Tier Limit | Real-World Capacity | Scale Trigger |
-| :--- | :--- | :--- | :--- | :--- |
-| **Hosting & CDN** | Vercel Hobby | 100 GB / month bandwidth | ~500,000 page views | Exceeding 100GB monthly egress |
-| **Serverless Invocations** | Vercel Hobby | 100,000 executions / mo | Static routes cached via CDN | Heavy dynamic SSR requests |
-| **Database Storage** | Supabase Free | 500 MB Postgres storage | ~250,000+ workout & set rows | Exceeding 500MB DB table size |
-| **Active Users (Auth)** | Supabase Free | 50,000 MAU (Monthly Active) | 50,000 unique sign-ins / mo | Crossing 50k monthly active users |
-| **Media / Storage** | Supabase Free | 1 GB file storage | ~5,000–8,000 compressed WebP photos | Crossing 1GB media files |
-| **Database Egress** | Supabase Free | 2 GB / month | Optimized by IndexedDB offline-first | Continuous raw polling |
+- Node.js 18+
+- npm or pnpm
+- A Supabase account (Free tier is sufficient)
 
----
+### Installation
 
-## 🛡️ Built-in Cost Control Safeguards
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Akashpandit08/consistency-app.git
+   cd consistency-app
+   ```
 
-1. **Local-First & Offline Resilience (IndexedDB)**:
-   - Workouts, drafts, exercise swaps, and biometrics save instantly to client-side IndexedDB (`lib/offline/store.ts`).
-   - Syncs to Supabase only when online, eliminating continuous database read/write round-trips.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-2. **Client-Side Image Compression (`lib/media/imageCompressor.ts`)**:
-   - Resizes all user photos to max 1200px and converts to WebP format in the browser before upload.
-   - Reduces photo file sizes by **85–95%** (e.g., 4MB raw photo → ~120KB WebP), preserving the 1GB free storage tier.
+3. **Set up environment variables**
+   Create a `.env.local` file in the root directory and add your Supabase credentials:
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=your-project-url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+   ```
 
-3. **0-Byte Web Audio Synthesizer (`lib/audio/workoutAudio.ts`)**:
-   - Workout countdown ticks, rest finish beeps, PR celebration chimes, and fanfare are generated dynamically using the browser's Web Audio API oscillators.
-   - Consumes **0 bytes of server bandwidth** and incurs $0 audio asset hosting costs.
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) in your browser to see the app.
 
-4. **Batched & Rate-Limited Analytics (`lib/analytics/events.ts`)**:
-   - Gathers UI events in memory and flushes them in a single multi-row SQL insert every 10 seconds or on tab close (`visibilitychange`).
-   - Rate limits requests to max 30 events/minute per client, preventing runaway API calls.
+## 💡 Philosophy
 
-5. **Client Rate Limiting Guards (`lib/security/rateLimit.ts`)**:
-   - Guards expensive endpoints (photo uploads, metrics submission, account resets) against rapid-fire submission.
+*Win today. Repeat tomorrow.*
 
-6. **Paginated & Indexed Database Queries**:
-   - Queries restrict payload size (`.limit(30)`, `.limit(60)`) and leverage composite B-Tree indexes on `user_id` and timestamp columns.
-
----
-
-## 💰 How to Monitor Usage & Prevent Unexpected Costs
-
-### In Supabase:
-1. Go to your **Supabase Dashboard → Organization Settings → Billing**.
-2. Ensure the project is on the **Free Plan**.
-3. By default, Supabase pauses resources when free limits are reached rather than billing your credit card.
-4. Set up usage notification emails under **Project Settings → Usage**.
-
-### In Vercel:
-1. Navigate to **Vercel Dashboard → Project Settings → Billing**.
-2. Verify **Spend Management** notifications are enabled to receive email alerts when bandwidth reaches 75% and 100% of the free tier.
-
----
-
-## 🚀 Getting Started
-
-### 1. Prerequisites
-- Node.js 18+ or 20+
-- A free [Supabase](https://supabase.com) account
-- A free [Vercel](https://vercel.com) account (for production deployment)
-
-### 2. Configure Environment Variables
-Copy `.env.example` to `.env.local`:
-```bash
-cp .env.example .env.local
-```
-
-Fill in your Supabase credentials:
-```env
-NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOi...
-```
-
-### 3. Initialize the Database
-1. Open your Supabase project dashboard.
-2. Go to **SQL Editor** → **New Query**.
-3. Paste the contents of [`supabase/schema.sql`](supabase/schema.sql) and click **Run**.
-4. This sets up all tables, indexes, security triggers, and Row Level Security (RLS) policies.
-
-### 4. Configure Authentication URLs
-In **Supabase Dashboard → Authentication → URL Configuration**:
-- **Site URL**: `http://localhost:3000` (or your production Vercel URL)
-- **Redirect URLs**: Add `http://localhost:3000/**` and `https://your-domain.vercel.app/**`
-
-### 5. Run Locally
-```bash
-npm install
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
----
-
-## 📦 Production Deployment (Vercel $0)
-
-1. Push your repository to GitHub.
-2. Import the repository into **Vercel**.
-3. Add `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` to Vercel Environment Variables.
-4. Click **Deploy**. Vercel will automatically build and serve the optimized static assets via global CDN.
-
----
-
-## 📱 Features
-
-- **Multi-Equipment 7-Day Workout Engine**: Full Gym, Home Gym, Dumbbells Only, and Calisthenics splits.
-- **Universal Exercise Library**: 100+ master exercises categorized by muscle group, mechanics, and difficulty with animated exercise motion guides.
-- **Interactive Workout Logger**: Set tracking, RPE, live rest timer with synthesized Web Audio sound cues.
-- **Offline-First Resilience**: Full IndexedDB sync queue for uninterrupted offline gym sessions.
-- **Health & Biometrics**: Track calories, macros, daily steps, heart rate, water intake, sleep, and body measurements.
-- **Private Progress Photos**: Client-side compressed WebP photo tracking.
-- **Community Challenges & Badges**: 7-Day, 14-Day, and 30-Day streak challenges with celebratory achievements.
+Consistency was built on the belief that a fitness app should never get in your way. It shouldn't force you to wait for loading spinners between sets, and it shouldn't cost you money just to track your own data. By leveraging edge computing and modern browser APIs, Consistency delivers a premium "superapp" experience entirely for free.
