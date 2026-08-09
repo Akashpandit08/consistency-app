@@ -82,58 +82,60 @@
   100% { transform: scale(1); opacity: 1; }
 }
 
-/* ─── Base resets ─────────────────────────────────────────── */
-*, *::before, *::after {
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
-}
+@layer base {
+  /* ─── Base resets ─────────────────────────────────────────── */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
 
-html {
-  background: var(--color-bg);
-  color: var(--color-text-main);
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-}
+  html {
+    background: var(--color-bg);
+    color: var(--color-text-main);
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
 
-body {
-  margin: 0;
-  background: var(--color-bg);
-  color: var(--color-text-main);
-  font-family: var(--font-family-sans);
-  line-height: 1.5;
-  overflow-x: hidden;
-}
+  body {
+    margin: 0;
+    background: var(--color-bg);
+    color: var(--color-text-main);
+    font-family: var(--font-family-sans);
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
 
-:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
-  border-radius: 4px;
-}
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
 
-button {
-  cursor: pointer;
-  font-family: inherit;
-}
+  button {
+    cursor: pointer;
+    font-family: inherit;
+  }
 
-input, textarea, select {
-  font-family: inherit;
-  background: var(--color-surface-2);
-  color: var(--color-text-main);
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
-  padding: 12px;
-  width: 100%;
-  transition: border-color 0.15s ease;
-}
+  input, textarea, select {
+    font-family: inherit;
+    background: var(--color-surface-2);
+    color: var(--color-text-main);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 12px;
+    width: 100%;
+    transition: border-color 0.15s ease;
+  }
 
-input:focus, textarea:focus, select:focus {
-  outline: none;
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 15%, transparent);
-}
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 15%, transparent);
+  }
 
-input::placeholder, textarea::placeholder {
-  color: var(--color-muted);
+  input::placeholder, textarea::placeholder {
+    color: var(--color-muted);
+  }
 }
 
 /* ─── Component classes ─────────────────────────────────── */
